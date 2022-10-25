@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { FavoritesComponent } from "./components/favorites/favorites.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from "./components/logout/logout.component";
-import { FavoritesComponent } from "./favorites/favorites.component";
-import { RegisterComponent } from "./register/register.component";
+import { RegisterComponent } from "./components/register/register.component";
 import { AuthGuardService } from "./service/auth-guard.service";
 
 
