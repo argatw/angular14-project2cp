@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     FavoritesComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

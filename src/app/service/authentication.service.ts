@@ -1,10 +1,15 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { map } from "rxjs/operators";
+import { Observable } from "rxjs/internal/Observable";
 
 export class User {
   constructor(public status: string) {}
 }
+
+const headers = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: "root"
@@ -26,6 +31,11 @@ export class AuthenticationService {
         })
       );
   }
+
+    register(email: string, password: string): Observable<any> {        
+      return this.http.post(
+        "http://localhost:8080/register",{email, password }, headers);
+    }
 
   isUserLoggedIn() {
     let user = sessionStorage.getItem("email");
