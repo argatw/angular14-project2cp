@@ -1,0 +1,32 @@
+<p>carparks-home works!</p>
+
+<mat-form-field class="example-full-width">
+    <input matInput placeholder="Carpark search here" [(ngModel)]="location" name="email" required>
+</mat-form-field>
+<button mat-raised-button (click)="getCarparksSearchResult()" color="primary">Search</button>
+
+<ul>
+    <li *ngFor="let c of carparks">
+        <a [routerLink]="['/carparkdetail', c.carparkNum]">
+            {{ c.address }}
+        </a>
+        <!-- <p>{{ c.address }}</p> -->
+        <p>{{ c.carparkNum }}</p>
+    </li>
+</ul>
+
+<!-- <div>
+    <ul>
+        <li *ngFor="let c of carparks">
+            {{ c.address }}
+        </li>
+    </ul>
+</div>
+<div>
+    <ul>
+        <li *ngFor="let c of carparks">
+            {{ c.car_park_no }}
+        </li>
+    </ul>
+</div> -->
+

@@ -1,14 +1,15 @@
 import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { firstValueFrom, Observable } from "rxjs";
+import { Carpark, CarparkList } from "../models";
 
-export class Favorite {
-  constructor(
-    public favId: string,
-    public name: string,
-    public car_park_no: string
-  ) {}
-}
+// export class Favorite {
+//   constructor(
+//     public favId: string,
+//     public name: string,
+//     public car_park_no: string
+//   ) {}
+// }
 
 @Injectable({
   providedIn: "root"
@@ -27,6 +28,21 @@ export class HttpClientService {
   getGreeting(): Observable<any> {
     return this.httpClient.get("http://localhost:8080/greeting" , { responseType: 'text' });
   }
+
+  getCarparkByCarParkNo(carparkNum: string): Promise<Carpark> {
+    return firstValueFrom(
+      this.httpClient.get<Carpark>(`/carpark/${carparkNum}`)
+    )
+  }
+
+  getCarparks(location: string) {
+    const params = new HttpParams()
+        .set("location", location)
+
+    return firstValueFrom(
+        this.httpClient.get<CarparkList[]>('/carpark/search', {params: params})
+        )
+}
 
   // public deleteEmployee(employee) {
   //   return this.httpClient.delete<Employee>(

@@ -1,0 +1,61 @@
+<p>carpark-detail works!</p>
+
+<button type="button" [routerLink]="['/']">Back to Search</button>
+
+<h3>{{ carpark.address }}</h3>
+<table>
+    <tr>
+        <td>Carpark type:</td>
+        <td>{{ carpark.carparkType }}</td>
+    </tr>
+    <tr>
+        <td>Carpark System:</td>
+        <td>{{ carpark.parkingSystem }}</td>
+    </tr>
+    <tr>
+        <td>Carpark term:</td>
+        <td>{{ carpark.parkingTerm }}</td>
+    </tr>
+    <tr>
+        <td>Carpark free parking:</td>
+        <td>{{ carpark.freeParking }}</td>
+    </tr>
+    <tr>
+        <td>Carpark night parking:</td>
+        <td>{{ carpark.nightParking }}</td>
+    </tr>
+    <tr>
+        <td>Carpark gantry height:</td>
+        <td>{{ carpark.gantryHeight }}</td>
+    </tr>
+    <tr>
+        <td>Carpark decks:</td>
+        <td>{{ carpark.decks }}</td>
+    </tr>
+    <tr>
+        <td>Carpark total lots:</td>
+        <td>{{ carpark.totalLots }}</td>
+    </tr>
+    <tr>
+        <td>Carpark available lots:</td>
+        <td>{{ carpark.availableLots }}</td>
+    </tr>
+    <tr>
+        <td>Carpark lattitude:</td>
+        <td>{{ carpark.xCoord }}</td>
+    </tr>
+    <tr>
+        <td>Carpark longitude:</td>
+        <td>{{ carpark.yCoord }}</td>
+    </tr>
+    <tr>
+        <td>Carpark basement:</td>
+        <td>{{ carpark.cpBasement }}</td>
+    </tr>
+    <!-- <tr>
+        <td><img [src]="book.imageUrl"></td>
+    </tr> -->
+    <tr>
+        <td></td>
+    </tr>
+</table>

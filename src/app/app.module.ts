@@ -17,6 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CarparksHomeComponent } from './components/carparks-home/carparks-home.component';
+import { CarparkDetailComponent } from './components/carpark-detail/carpark-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { RegisterComponent } from './components/register/register.component';
     HeaderComponent,
     FavoritesComponent,
     RegisterComponent,
+    CarparksHomeComponent,
+    CarparkDetailComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a>
         <a mat-button *ngIf="!loginService.isUserLoggedIn()" routerLink="/register" class="nav-link">Register</a>
         <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/" class="nav-link">View Employees</a>
-        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/addemployee" class="nav-link">Add New Employee</a>
+        <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/carparksearch" class="nav-link">Carpark search</a>
         <a mat-button *ngIf="loginService.isUserLoggedIn()" routerLink="/logout" class="nav-link">LogOut</a>
     </mat-toolbar-row>
 </mat-toolbar>
