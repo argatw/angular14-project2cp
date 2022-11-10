@@ -1,2 +1,37 @@
 <!-- <p>{{ favorites }}</p> -->
-<p>{{ content }}</p>
+<!-- <p>{{ content }}</p> -->
+
+<table mat-table [dataSource]="carparksInFavs" class="mat-elevation-z8" >
+    <ng-container matColumnDef="carparkNum" >
+      <th mat-header-cell *matHeaderCellDef> carparkNum </th>
+      <td mat-cell *matCellDef="let fav"> {{ fav.carparkNum }} </td>
+    </ng-container>
+    <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef> Address </th>
+        <td mat-cell *matCellDef="let fav"> {{ fav.address }} </td>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+        <mat-cell *matCellDef="let fav of carparksInFavs" > <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+            (click)="removeCpFromFavorites(fav)" color="warn">
+            <mat-icon>delete</mat-icon>
+            </button> </mat-cell>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- <table mat-table [dataSource]="carparksInFavs" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+      <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+      <td mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+        (click)="removeCpFromFavorites(column)" color="warn">
+        <mat-icon>delete</mat-icon>
+        </button> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let emprow; columns: displayedColumns"></tr>
+  </table> -->

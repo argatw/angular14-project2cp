@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,6 +20,7 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { RegisterComponent } from './components/register/register.component';
 import { CarparksHomeComponent } from './components/carparks-home/carparks-home.component';
 import { CarparkDetailComponent } from './components/carpark-detail/carpark-detail.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { CarparkDetailComponent } from './components/carpark-detail/carpark-deta
     RegisterComponent,
     CarparksHomeComponent,
     CarparkDetailComponent,
+    HomepageComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,10 @@ import { CarparkDetailComponent } from './components/carpark-detail/carpark-deta
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule, HttpClientModule, RouterTestingModule,
-    FormsModule
+    FormsModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC16z_Dinq2IKjGx-2XlIwvwbwOLQfydEA'
+    })
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHttpInterceptorService, multi: true }],
   bootstrap: [AppComponent]

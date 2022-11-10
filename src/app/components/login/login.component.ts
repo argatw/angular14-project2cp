@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   checkLogin() {
     (this.loginservice.authenticate(this.email, this.password).subscribe(
       data => {
-        this.router.navigate([''])
+        this.router.navigate(['carparksearch'])
         this.invalidLogin = false
       },
       error => {

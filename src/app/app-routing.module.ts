@@ -6,12 +6,14 @@ import { FavoritesComponent } from "./components/favorites/favorites.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from "./components/logout/logout.component";
 import { RegisterComponent } from "./components/register/register.component";
+import { HomepageComponent } from "./homepage/homepage.component";
 import { AuthGuardService } from "./service/auth-guard.service";
 
 
 
 const routes: Routes = [
-    { path: '', component: FavoritesComponent,canActivate:[AuthGuardService] },
+    { path: '', component: HomepageComponent }, 
+    { path: 'favorites', component: FavoritesComponent,canActivate:[AuthGuardService] },
     { path: 'carparksearch', component: CarparksHomeComponent,canActivate:[AuthGuardService]},
     { path: 'carparkdetail/:carparkNum', component: CarparkDetailComponent,canActivate:[AuthGuardService]},
     { path: 'register', component: RegisterComponent },

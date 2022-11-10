@@ -24,8 +24,8 @@ export interface Carpark {
     decks: string
     totalLots: number
     availableLots: number
-    xCoord: string
-    yCoord: string
+    xCoord: number
+    yCoord: number
     cpBasement: string
     }
 
@@ -33,4 +33,10 @@ export interface CarparkList {
     address: string
     carparkNum: string 
     }
+
+export interface Favorites {
+    carparkNum: string
+    address: string
+    email: string
+}
 

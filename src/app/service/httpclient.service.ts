@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { firstValueFrom, Observable } from "rxjs";
-import { Carpark, CarparkList } from "../models";
+import { Carpark, CarparkList, Favorites } from "../models";
 
 // export class Favorite {
 //   constructor(
@@ -42,7 +42,30 @@ export class HttpClientService {
     return firstValueFrom(
         this.httpClient.get<CarparkList[]>('/carpark/search', {params: params})
         )
-}
+  }
+
+  addToFavorites(favorites: Favorites) {
+    return firstValueFrom(this.httpClient.post<any>('/addToFavs', favorites))
+  }
+
+  getFavoriteItems(email: string) {
+    const params = new HttpParams()
+        .set("email", email)
+
+    return firstValueFrom(
+      this.httpClient.get<Favorites[]>(`/favorites`, {params: params}))
+  }
+
+  removeFavFromFavorites(favorites: Favorites) {
+    const carparkNum = favorites.carparkNum
+    const email = favorites.email
+    const params = new HttpParams()
+        .set("email", email)
+        .set("carparkNum", carparkNum)
+        
+    return firstValueFrom(this.httpClient.delete(`/deleteFavorites`, {params: params}))
+  }
+
 
   // public deleteEmployee(employee) {
   //   return this.httpClient.delete<Employee>(

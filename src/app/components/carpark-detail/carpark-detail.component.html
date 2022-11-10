@@ -1,8 +1,10 @@
 <p>carpark-detail works!</p>
 
-<button type="button" [routerLink]="['/']">Back to Search</button>
+<button type="button" [routerLink]="['/']">View Favorites</button>
+<button type="button" (click)="addToFavorites(carpark)">Add To Favorites</button>
 
 <h3>{{ carpark.address }}</h3>
+<!-- <h3>{{ carpark.carparkNum }}</h3> -->
 <table>
     <tr>
         <td>Carpark type:</td>
@@ -56,6 +58,10 @@
         <td><img [src]="book.imageUrl"></td>
     </tr> -->
     <tr>
-        <td></td>
+        <td>
+            <agm-map [latitude]="lat" [longitude]="lng">
+                <agm-marker [latitude]="carpark.xCoord" [longitude]="carpark.yCoord"></agm-marker>
+              </agm-map>
+        </td>
     </tr>
 </table>
