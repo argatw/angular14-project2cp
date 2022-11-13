@@ -65,3 +65,56 @@
         </td>
     </tr>
 </table>
+
+<form [formGroup]="form" (ngSubmit)="report()">
+    <table>
+        <tr>
+            <td>Report Pic: </td>
+            <td>
+                <input type="file" formControlName="pic" #toUpload>
+            </td>
+        </tr>
+        <tr>
+            <td>Description: </td>
+            <td>
+                <input type="text" formControlName="description">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit" [disabled]="form.invalid">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+<!-- <mat-card>
+    <mat-card-header>
+        <mat-card-title>Report</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form>
+            <table class="example-full-width" cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <input matInput type="file" formControlName="pic" #toUpload>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput type="text" formControlName="description"></textarea>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                
+            </table>
+        </form>
+        
+    </mat-card-content> -->
+    <!-- <mat-card-actions>
+        <button mat-raised-button (click)="report()" color="primary">Submit report</button>
+    </mat-card-actions>
+</mat-card> -->

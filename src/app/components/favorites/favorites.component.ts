@@ -15,6 +15,7 @@ export class FavoritesComponent implements OnInit {
   // content?: string;
 
   email = ''
+  // email = sessionStorage.getItem('email') || '';
   // favCarpark!: Favorites
   carparksInFavs: Favorites[] = []
 
@@ -67,6 +68,30 @@ export class FavoritesComponent implements OnInit {
         })
       }
     location.reload()
+  }
+
+  // sendEmail(): void {
+  //   const email = this.email;
+  //   console.log(email);
+  //   this.httpClientService.sendFavsByEmail(email)
+  //     .then(result => {
+  //       console.info('>>> items in emailfavs:: ', result)
+  //       this.carparksInFavs = result
+  //     }).catch(error => {
+  //       console.error(">>> error: ", error)
+  //     }) 
+  // }
+
+  sendEmail(): void {
+    this.httpClientService.sendFavsByEmail(this.email).subscribe({
+      next: data => {
+        console.log(">>sendEmail() data::", data);
+        alert("Favorites successfully sent to your email")
+      },
+      error: err => {
+
+      }
+    })
   }
 
   

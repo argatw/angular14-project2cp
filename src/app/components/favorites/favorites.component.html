@@ -1,14 +1,17 @@
 <!-- <p>{{ favorites }}</p> -->
 <!-- <p>{{ content }}</p> -->
+<button mat-raised-button (click)="sendEmail()" color="primary">Send favorites to your email!</button>
 
 <table mat-table [dataSource]="carparksInFavs" class="mat-elevation-z8" >
     <ng-container matColumnDef="carparkNum" >
       <th mat-header-cell *matHeaderCellDef> carparkNum </th>
-      <td mat-cell *matCellDef="let fav"> {{ fav.carparkNum }} </td>
+      <td mat-cell *matCellDef="let fav" > 
+        <a [routerLink]="['/carparkdetail', fav.carparkNum]"> {{ fav.carparkNum }}  </a>
+      </td>
     </ng-container>
     <ng-container matColumnDef="address">
         <th mat-header-cell *matHeaderCellDef> Address </th>
-        <td mat-cell *matCellDef="let fav"> {{ fav.address }} </td>
+        <td mat-cell *matCellDef="let fav" [routerLink]="['/carparkdetail', fav.carparkNum]"> {{ fav.address }} </td>
     </ng-container>
     <ng-container matColumnDef="delete">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>

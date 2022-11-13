@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { HttpClientService } from 'src/app/service/httpclient.service';
 import { Carpark, Favorites } from 'src/app/models';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-carpark-detail',
@@ -10,6 +11,11 @@ import { Carpark, Favorites } from 'src/app/models';
   styleUrls: ['./carpark-detail.component.css']
 })
 export class CarparkDetailComponent implements OnInit {
+
+  form!: FormGroup
+
+  @ViewChild('toUpload')
+  toUpload!: ElementRef
 
   carparkNum!: string
   carpark!: Carpark
@@ -22,10 +28,14 @@ export class CarparkDetailComponent implements OnInit {
   lat = 1.287953;
   lng = 103.851784;
 
-  constructor(private activatedRoute: ActivatedRoute, private title: Title, 
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private title: Title, 
     private clientService: HttpClientService) { }
 
   ngOnInit(): void {
+    this.form = this.fb.group({
+      description: this.fb.control<string>('', [Validators.required]),
+      pic: this.fb.control<any>('',[Validators.required])
+    })
     // this.email = JSON.parse(sessionStorage.getItem("email")!) 
     this.favCarpark = {
       email: '',
@@ -63,6 +73,24 @@ export class CarparkDetailComponent implements OnInit {
 
     console.info("Current favorites are:: ", this.carparksInFavs)
     alert(`${this.favCarpark.carparkNum} added to favorites`)
+  }
+
+  report() {
+    console.info('>>> to report: ', this.form.value)
+    const description = this.form.get('description')?.value
+    const myFile = this.toUpload.nativeElement.files[0]
+    const email = this.email
+    const carparkNum = this.activatedRoute.snapshot.params['carparkNum']
+
+    this.clientService.report(email, description, carparkNum, myFile)
+        .then(result => {
+          console.info('>>>>  report result: ', result)
+          alert('Report Successful!')
+          // this.router.navigate(['/'])
+        }).catch(error => {
+          console.error('>>> error: ', error)
+          alert('Report Unsuccessful.')
+        })
   }
 
 

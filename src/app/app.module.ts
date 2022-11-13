@@ -13,7 +13,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -41,7 +41,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule, HttpClientModule, RouterTestingModule,
-    FormsModule, 
+    FormsModule, ReactiveFormsModule, 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC16z_Dinq2IKjGx-2XlIwvwbwOLQfydEA'
     })

@@ -11,6 +11,10 @@ import { Carpark, CarparkList, Favorites } from "../models";
 //   ) {}
 // }
 
+const headers = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: "root"
 })
@@ -56,6 +60,19 @@ export class HttpClientService {
       this.httpClient.get<Favorites[]>(`/favorites`, {params: params}))
   }
 
+  sendFavsByEmail(email: string): Observable<any> {   
+    return this.httpClient.post("/emailFavorites",{email}, headers);
+    
+
+    // const params = new HttpParams()
+    //     .set("email", email) 
+    // return this.httpClient.post<any>(`/emailFavorites`,{params: params})
+    // return firstValueFrom(
+    //   this.httpClient.post<any>(`/emailFavorites`,{params: params}));
+    // return firstValueFrom(
+    //   this.httpClient.post<any>(`/carpark/${email}`));
+  }
+
   removeFavFromFavorites(favorites: Favorites) {
     const carparkNum = favorites.carparkNum
     const email = favorites.email
@@ -65,6 +82,18 @@ export class HttpClientService {
         
     return firstValueFrom(this.httpClient.delete(`/deleteFavorites`, {params: params}))
   }
+
+  report(description:string, email:string, carparkNum:string, pic: File | Blob) {
+    const data = new FormData()
+    data.set('email', email)
+    data.set('description', description)
+    data.set('myFile', pic)
+    data.set('carparkNum', carparkNum)
+
+    return firstValueFrom(this.httpClient.post<any>('/report', data))
+  }
+
+  
 
 
   // public deleteEmployee(employee) {
