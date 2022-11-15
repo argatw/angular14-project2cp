@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/service/authentication.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,7 @@ export class RegisterComponent implements OnInit {
         alert("Successfully registered! ")
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['login']);
       },
       error: err => {
         this.errorMessage = err.error.message;

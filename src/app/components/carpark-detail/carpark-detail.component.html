@@ -1,7 +1,9 @@
-<p>carpark-detail works!</p>
 
-<button type="button" [routerLink]="['/']">View Favorites</button>
-<button type="button" (click)="addToFavorites(carpark)">Add To Favorites</button>
+
+<!-- <button type="button" [routerLink]="['/']">View Favorites</button> -->
+<!-- <button type="button" (click)="addToFavorites(carpark)">Add To Favorites</button> -->
+
+
 
 <h3>{{ carpark.address }}</h3>
 <!-- <h3>{{ carpark.carparkNum }}</h3> -->
@@ -66,10 +68,14 @@
     </tr>
 </table>
 
+<button mat-raised-button (click)="addToFavorites(carpark)" color="primary">Add To Favorites</button>
+
+<!-- <h3>Submit report of carpark below:</h3> -->
 <form [formGroup]="form" (ngSubmit)="report()">
+    <h3>Submit report of carpark below:</h3>
     <table>
         <tr>
-            <td>Report Pic: </td>
+            <td>Picture: </td>
             <td>
                 <input type="file" formControlName="pic" #toUpload>
             </td>

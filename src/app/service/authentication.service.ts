@@ -21,7 +21,7 @@ export class AuthenticationService {
 //store JWT token in session
   authenticate(email: string, password: string) {
     return this.http
-      .post<any>("http://localhost:8080/authenticate", { email, password })
+      .post<any>("/authenticate", { email, password })
       .pipe(
         map(userData => {
           sessionStorage.setItem("email", email);
@@ -34,7 +34,7 @@ export class AuthenticationService {
 
     register(email: string, password: string): Observable<any> {        
       return this.http.post(
-        "http://localhost:8080/register",{email, password }, headers);
+        "/register",{email, password }, headers);
     }
 
   isUserLoggedIn() {

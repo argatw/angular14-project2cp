@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Favorites } from 'src/app/models';
 import { HttpClientService } from 'src/app/service/httpclient.service';
 // import { Favorite, HttpClientService } from '../service/httpclient.service';
@@ -23,7 +24,7 @@ export class FavoritesComponent implements OnInit {
 
 
 
-  constructor(private httpClientService: HttpClientService) { }
+  constructor(private httpClientService: HttpClientService, private router: Router) { }
 
   // ngOnInit(): void {
   //   this.httpClientService.getFavorites().subscribe(
@@ -63,6 +64,7 @@ export class FavoritesComponent implements OnInit {
         .then(result => {
           console.info('>>> remove fav from favorites: ', result)
           alert(`${$event.carparkNum} removed from favorites.`)
+          // this.router.navigate(['login']);
         }).catch(error => {
           console.error('>>> error: ', error)
         })
